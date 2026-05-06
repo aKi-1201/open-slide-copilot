@@ -100,11 +100,11 @@ export function Presenter() {
 
   if (error) {
     return (
-      <div className="grid h-dvh place-items-center bg-zinc-950 p-8 text-zinc-300">
+      <div className="dark grid h-dvh place-items-center bg-background p-8 text-foreground">
         <div className="max-w-md text-center">
-          <span className="eyebrow text-red-300/80">{t.common.loadFailed}</span>
+          <span className="eyebrow text-destructive/80">{t.common.loadFailed}</span>
           <h2 className="mt-2 font-heading text-xl font-semibold">{t.common.failedToLoadSlide}</h2>
-          <pre className="mt-4 overflow-auto rounded-[6px] border border-white/10 bg-black/40 p-4 text-left text-[11.5px] whitespace-pre-wrap">
+          <pre className="mt-4 overflow-auto rounded-[6px] border border-border bg-card p-4 text-left text-[11.5px] whitespace-pre-wrap shadow-edge">
             {error}
           </pre>
         </div>
@@ -114,15 +114,15 @@ export function Presenter() {
 
   if (!slide) {
     return (
-      <div className="grid h-dvh place-items-center bg-zinc-950 text-zinc-400">
+      <div className="dark grid h-dvh place-items-center bg-background text-muted-foreground">
         <div className="flex flex-col items-center gap-4">
-          <div className="relative h-px w-56 overflow-hidden bg-white/10">
+          <div className="relative h-px w-56 overflow-hidden bg-border">
             <span
               aria-hidden
-              className="line-loader-bar absolute inset-y-[-0.5px] left-0 w-1/4 bg-zinc-100"
+              className="line-loader-bar absolute inset-y-[-0.5px] left-0 w-1/4 bg-foreground"
             />
           </div>
-          <div className="text-[12.5px]">{format(t.presenter.loadingSlide, { slideId })}</div>
+          <div className="text-[11.5px]">{format(t.presenter.loadingSlide, { slideId })}</div>
         </div>
       </div>
     );
@@ -141,7 +141,7 @@ export function Presenter() {
   const NextPage = hasNext ? pages[nextIndex] : null;
 
   return (
-    <div className="flex h-dvh w-screen flex-col overflow-hidden bg-zinc-950 text-zinc-100">
+    <div className="dark flex h-dvh w-screen flex-col overflow-hidden bg-background text-foreground">
       <PresenterTopBar
         index={index}
         total={total}
@@ -154,7 +154,7 @@ export function Presenter() {
         {/* Now-showing */}
         <section className="flex min-h-0 flex-col gap-3">
           <SectionLabel>{t.presenter.nowShowing}</SectionLabel>
-          <div className="relative min-h-0 flex-1 overflow-hidden rounded-[8px] bg-black ring-1 ring-white/10">
+          <div className="relative min-h-0 flex-1 overflow-hidden rounded-[8px] bg-black ring-1 ring-border">
             <SlideCanvas flat design={slide.design}>
               <CurrentPage />
             </SlideCanvas>
@@ -177,7 +177,7 @@ export function Presenter() {
           <div className="flex flex-col gap-2">
             <SectionLabel>{hasNext ? t.presenter.upNext : t.presenter.lastSlide}</SectionLabel>
             <div
-              className="relative w-full overflow-hidden rounded-[6px] bg-black ring-1 ring-white/10"
+              className="relative w-full overflow-hidden rounded-[8px] bg-black ring-1 ring-border"
               style={{ aspectRatio: `${CANVAS_WIDTH}/${CANVAS_HEIGHT}` }}
             >
               {NextPage ? (
@@ -185,7 +185,7 @@ export function Presenter() {
                   <NextPage />
                 </SlideCanvas>
               ) : (
-                <div className="grid h-full place-items-center text-[11.5px] text-white/40">
+                <div className="grid h-full place-items-center text-[11.5px] text-muted-foreground">
                   {t.presenter.endOfDeck}
                 </div>
               )}
@@ -194,13 +194,13 @@ export function Presenter() {
 
           <div className="flex min-h-0 flex-1 flex-col gap-2">
             <SectionLabel>{t.presenter.speakerNotes}</SectionLabel>
-            <div className="min-h-0 flex-1 overflow-y-auto rounded-[6px] border border-white/10 bg-black/40 p-3 text-[13.5px] leading-relaxed whitespace-pre-wrap text-white/85">
+            <div className="min-h-0 flex-1 overflow-y-auto rounded-[6px] border border-border bg-card p-3 text-[13.5px] leading-relaxed whitespace-pre-wrap text-card-foreground">
               {note?.trim() ? (
                 note
               ) : (
-                <span className="text-white/40">
+                <span className="text-muted-foreground">
                   {t.presenter.noNotesPrefix}
-                  <code className="rounded-[3px] bg-white/10 px-1 py-0.5 font-mono text-[12px]">
+                  <code className="rounded-[3px] bg-muted px-1 py-0.5 font-mono text-[12px]">
                     export const notes = […]
                   </code>
                   {t.presenter.noNotesSuffix}
@@ -241,7 +241,7 @@ function PresenterTopBar({
 }) {
   const t = useLocale();
   return (
-    <header className="flex shrink-0 items-center justify-between border-b border-white/10 px-6 py-3">
+    <header className="flex h-12 shrink-0 items-center justify-between border-b border-hairline px-6">
       <div className="flex items-baseline gap-3">
         <span className="eyebrow text-white/45">{t.presenter.eyebrow}</span>
         <span className="truncate font-heading text-[14px] font-semibold tracking-tight">
@@ -257,9 +257,9 @@ function PresenterTopBar({
         <Clock />
         <ElapsedClock startedAt={startedAt} />
         <div className="font-mono text-[18px] tabular-nums">
-          <span className="text-white">{(index + 1).toString().padStart(2, '0')}</span>
-          <span className="text-white/35"> / </span>
-          <span className="text-white/55">{total.toString().padStart(2, '0')}</span>
+          <span className="text-foreground">{(index + 1).toString().padStart(2, '0')}</span>
+          <span className="text-foreground/30"> / </span>
+          <span className="text-muted-foreground">{total.toString().padStart(2, '0')}</span>
         </div>
       </div>
     </header>
@@ -285,7 +285,7 @@ function PresenterBottomBar({
 }) {
   const t = useLocale();
   return (
-    <footer className="flex shrink-0 items-center justify-between gap-3 border-t border-white/10 px-6 py-3">
+    <footer className="flex shrink-0 items-center justify-between gap-3 border-t border-hairline px-6 py-3">
       <div className="flex items-center gap-2">
         <Button variant="outline" onClick={onPrev} disabled={index === 0}>
           <ChevronLeft className="size-4" /> {t.presenter.prev}
@@ -352,15 +352,15 @@ function PresenterJumpControl({
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder={(current + 1).toString()}
-        className="h-8 w-20 rounded-[5px] border border-white/15 bg-black/40 px-2 font-mono text-[12px] tabular-nums outline-none focus-visible:border-white/30"
+        className="h-8 w-20 rounded-[5px] border border-border bg-card px-2 font-mono text-[12px] tabular-nums outline-none focus-visible:border-foreground/30"
       />
-      <span className="font-mono text-[11px] text-white/45">/ {total}</span>
+      <span className="font-mono text-[11px] text-muted-foreground">/ {total}</span>
     </form>
   );
 }
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
-  return <span className="eyebrow text-white/45">{children}</span>;
+  return <span className="eyebrow">{children}</span>;
 }
 
 function Clock() {
@@ -373,7 +373,7 @@ function Clock() {
   return (
     <time
       title={t.presenter.currentTime}
-      className="font-mono text-[12px] tabular-nums text-white/55"
+      className="font-mono text-[12px] tabular-nums text-muted-foreground"
     >
       {now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
     </time>
@@ -396,7 +396,10 @@ function ElapsedClock({ startedAt }: { startedAt: number }) {
       ? `${h}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`
       : `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   return (
-    <time title={t.presenter.elapsed} className="font-mono text-[18px] tabular-nums text-white">
+    <time
+      title={t.presenter.elapsed}
+      className="font-mono text-[18px] tabular-nums text-foreground"
+    >
       {text}
     </time>
   );
