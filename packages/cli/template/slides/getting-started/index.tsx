@@ -1,6 +1,5 @@
 import type { DesignSystem, Page, SlideMeta } from '@open-slide/core';
 
-import claudeLogo from './assets/claude.svg';
 import cloudflareLogo from './assets/cloudflare.svg';
 import geminiLogo from './assets/gemini.svg';
 import codexLogo from './assets/openai.svg';
@@ -699,7 +698,7 @@ const Prompt: Page = () => {
           }}
         >
           {/* LEFT — agent CLI */}
-          <WindowShell title="claude · ~/my-slide">
+          <WindowShell title="copilot · ~/my-slide">
             <div
               style={{
                 flex: 1,
@@ -1355,7 +1354,7 @@ const VisualEdit: Page = () => {
 // ─── Slide: Assets manager ───────────────────────────────────────────────────
 const AssetsManager: Page = () => {
   const cards: { name: string; size: string; src: string }[] = [
-    { name: 'claude.svg', size: '3.4 KB', src: claudeLogo },
+    { name: 'openai.svg', size: '3.4 KB', src: codexLogo },
     { name: 'openai.svg', size: '2.1 KB', src: codexLogo },
     { name: 'gemini.svg', size: '4.0 KB', src: geminiLogo },
     { name: 'opencode.svg', size: '5.2 KB', src: opencodeLogo },
@@ -2194,7 +2193,7 @@ const Apply: Page = () => (
         }}
       >
         {/* LEFT — agent CLI + code */}
-        <WindowShell title="claude · ~/my-slide">
+        <WindowShell title="copilot · ~/my-slide">
           <div
             style={{
               flex: 1,
@@ -2687,7 +2686,7 @@ const Recap: Page = () => {
 // ─── Slide: Agent agnostic ───────────────────────────────────────────────────
 const AgentAgnostic: Page = () => {
   const agents = [
-    { name: 'Claude Code', src: claudeLogo },
+    { name: 'Copilot', src: codexLogo },
     { name: 'Codex', src: codexLogo },
     { name: 'Gemini CLI', src: geminiLogo },
     { name: 'opencode', src: opencodeLogo },

@@ -9,8 +9,8 @@ polished deck is mostly the runtime — which open-slide provides.
 
 ## What ships in the workspace
 
-`npx @open-slide/cli init` generates an `AGENTS.md` (and `CLAUDE.md`) at the
-root with the framework's hard rules, plus a `skills/` folder with five
+`npx @open-slide/cli init` generates an `AGENTS.md` at the root with the
+framework's hard rules, plus a `skills/` folder with five
 skills the agent invokes by name:
 
 - [`/create-slide`](/docs/skills/create-slide)
@@ -44,7 +44,7 @@ Code, Codex, Cursor, Gemini CLI, OpenCode, Windsurf, Zed.
 
 To author cleanly, the agent needs to:
 
-1. **Read the rules.** `AGENTS.md` (and `CLAUDE.md`) at the workspace root
+1. **Read the rules.** `AGENTS.md` at the workspace root
    define the file contract and constraints.
 2. **Find the skills.** `/create-slide`, `/slide-authoring`,
    `/apply-comments`, `/create-theme`, `/current-slide` live under `skills/`
@@ -55,11 +55,9 @@ If your agent of choice doesn't have a skills system, you can paste the
 `slide-authoring` skill into context manually and ask the agent to follow
 its rules.
 
-### Mirroring `AGENTS.md` for Claude Code
+### `AGENTS.md` as the canonical rules file
 
 `AGENTS.md` is the canonical rules file — it follows the cross-tool
-convention that Codex, Cursor, Gemini CLI, OpenCode, Windsurf, and Zed
-already look for. `CLAUDE.md` is generated alongside it so Claude Code
-picks the rules up automatically. The two files are kept in sync by the
-scaffolder; edit `AGENTS.md` and re-run `open-slide sync:skills` if you
-want the mirror refreshed.
+convention that Copilot, Codex, Cursor, Gemini CLI, OpenCode, Windsurf, and
+Zed already look for. The workspace keeps one rules file and one canonical
+skills directory: `AGENTS.md` plus `.agents/skills/`.

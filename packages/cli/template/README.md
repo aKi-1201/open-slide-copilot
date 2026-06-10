@@ -35,7 +35,7 @@ export default [Cover] satisfies Page[];
 
 Every page renders into a fixed **1920 × 1080** canvas — design with absolute pixel values. Put images, videos, and fonts under `slides/<id>/assets/` and import them directly.
 
-See [`CLAUDE.md`](./CLAUDE.md) for the full authoring guide.
+See [`AGENTS.md`](./AGENTS.md) for the full authoring guide.
 
 ## Navigation
 
@@ -43,9 +43,9 @@ See [`CLAUDE.md`](./CLAUDE.md) for the full authoring guide.
 - `F` enters fullscreen play mode; Esc exits.
 - In play mode: Space / → next, ← prev.
 
-## Claude Code integration
+## Agent integration
 
-This workspace ships with Claude Code skills preconfigured under `.claude/skills/` and `.agents/skills/`. Ask Claude Code to "make slides about X" and the `create-slide` skill takes over. Use `apply-comments` to iterate via inspector-style markers inside your source.
+This workspace ships with agent skills preconfigured under `.agents/skills/`. Ask your coding agent to "make slides about X" and the `create-slide` skill takes over. Use `apply-comments` to iterate via inspector-style markers inside your source.
 
 ## Config
 

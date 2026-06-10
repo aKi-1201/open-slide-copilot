@@ -22,7 +22,7 @@ Slides are visual code. Agents are great at writing code. open-slide is the miss
 
 ### 🤖 Agent-native authoring
 
-Works with any coding agent (Claude Code, Codex, Cursor, …). The scaffolder ships with built-in skills:
+Works with any coding agent (Copilot, Codex, Cursor, …). The scaffolder ships with built-in skills:
 
 - **`/create-slide`** — drafts a deck end-to-end. Asks four scoping questions (topic & aesthetic, page count, text density, motion vs. static), picks an id, plans the structure, and writes the pages.
 - **`/slide-authoring`** — the technical reference for the 1920 × 1080 canvas, type scale, palette, and layout rules. The agent reads this before writing.
@@ -63,7 +63,7 @@ cd my-slide
 pnpm dev
 ```
 
-The scaffolded workspace ships with agent skills preconfigured for Claude Code. From there you drive the deck through your agent — or edit `slides/<id>/index.tsx` directly. See [CLAUDE.md](CLAUDE.md) for the hard rules.
+The scaffolded workspace ships with agent skills preconfigured. From there you drive the deck through your agent — or edit `slides/<id>/index.tsx` directly. See [AGENTS.md](AGENTS.md) for the hard rules.
 
 ## Repo layout
 
